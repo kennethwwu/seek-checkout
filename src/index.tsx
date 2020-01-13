@@ -2,11 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import userContext, { useUser } from './store/userState'
+import checkoutContext, { useCheckout } from './store/checkoutState'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+function AppWrapper(){
+    const {user, setNewUser} = useUser();
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+    return (
+        <userContext.Provider value={{user, setUser:setNewUser}}>
+            <checkoutContext.Provider value={useCheckout()}>
+                <App />
+            </checkoutContext.Provider>
+        </userContext.Provider>
+    )
+}
+
+ReactDOM.render(
+    <AppWrapper />
+, document.getElementById('root'));
