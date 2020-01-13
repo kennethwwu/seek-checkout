@@ -1,3 +1,9 @@
+## Install the packages
+
+```bash
+  npm i
+  ```
+
 ## Available Scripts
 
 In the project directory, you can run:
