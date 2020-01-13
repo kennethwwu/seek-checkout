@@ -8,7 +8,7 @@ function CheckoutTotal() {
     return (
         <Row>
             <Col className={'text-right'}>
-                <p className={'text-danger'}>Save: -{(checkout.discount).toFixed(2)}</p>
+                {checkout.discount >0 && <p className={'text-danger'}>Save: -{(checkout.discount).toFixed(2)}</p>}
                 <p>Total: <em>${(checkout.total-checkout.discount).toFixed(2)}</em></p>
             </Col>
         </Row>
